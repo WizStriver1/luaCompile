@@ -1,0 +1,83 @@
+M:\Document\Lua\lua-5.3.5>mkdir bin
+
+M:\Document\Lua\lua-5.3.5>cd src
+
+M:\Document\Lua\lua-5.3.5\src>del *.obj
+Could Not Find M:\Document\Lua\lua-5.3.5\src\*.obj
+
+M:\Document\Lua\lua-5.3.5\src>cl /O2 /W3 /c /DLUA_BUILD_AS_DLL *.c
+用于 80x86 的 Microsoft (R) 32 位 C/C++ 优化编译器 16.00.30319.01 版
+版权所有(C) Microsoft Corporation。保留所有权利。
+
+lapi.c
+lapi.c(398) : warning C4244: “return”: 从“lua_Unsigned”转换到“size_t”，可能丢失数据
+lauxlib.c
+lbaselib.c
+lbitlib.c
+lcode.c
+lcorolib.c
+lctype.c
+ldblib.c
+ldebug.c
+ldo.c
+ldump.c
+lfunc.c
+lgc.c
+linit.c
+liolib.c
+llex.c
+lmathlib.c
+lmem.c
+loadlib.c
+lobject.c
+正在生成代码...
+正在编译...
+lopcodes.c
+loslib.c
+lparser.c
+lstate.c
+lstring.c
+lstrlib.c
+ltable.c
+ltablib.c
+ltm.c
+lua.c
+luac.c
+lundump.c
+lutf8lib.c
+lvm.c
+lzio.c
+正在生成代码...
+
+M:\Document\Lua\lua-5.3.5\src>del lua.obj luac.obj
+
+M:\Document\Lua\lua-5.3.5\src>link /Dll /out:../bin/lua.dll *.obj
+Microsoft (R) Incremental Linker Version 10.00.30319.01
+Copyright (C) Microsoft Corporation.  All rights reserved.
+
+   正在创建库 ../bin/lua.lib 和对象 ../bin/lua.exp
+
+M:\Document\Lua\lua-5.3.5\src>cl /O2 /W3 /c /DLUA_BUILD_AS_DLL lua.c luac.c
+用于 80x86 的 Microsoft (R) 32 位 C/C++ 优化编译器 16.00.30319.01 版
+版权所有(C) Microsoft Corporation。保留所有权利。
+
+lua.c
+luac.c
+正在生成代码...
+
+M:\Document\Lua\lua-5.3.5\src>link /Dll /out:../bin/lua.exe lua.obj ../bin/lua.lib
+Microsoft (R) Incremental Linker Version 10.00.30319.01
+Copyright (C) Microsoft Corporation.  All rights reserved.
+
+
+M:\Document\Lua\lua-5.3.5\src>del lua.obj
+
+M:\Document\Lua\lua-5.3.5\src>link /out:../bin/luac.exe *.obj
+Microsoft (R) Incremental Linker Version 10.00.30319.01
+Copyright (C) Microsoft Corporation.  All rights reserved.
+
+   正在创建库 ../bin/luac.lib 和对象 ../bin/luac.exp
+
+M:\Document\Lua\lua-5.3.5\src>del *.obj
+
+M:\Document\Lua\lua-5.3.5\src>cd ..

@@ -1,0 +1,121 @@
+M:\Document\Lua\lua-5.3.5>built_lua.v3.bat
+
+M:\Document\Lua\lua-5.3.5>title build lua
+
+M:\Document\Lua\lua-5.3.5>set path=I:\InstallerPackage\VisualStudio\vs2010_Compiler-2018-09-07-17-14\Compiler\VC\bin;D:\Program Files\ImageMagick-7.0.1-Q16;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0\;C:\Windows\System32\OpenSSH\;D:\Program Files\Git\cmd;C:\Program Files (x86)\NVIDIA Corporation\PhysX\Common;D:\dev\nvm;D:\dev\nodejs;D:\Program Files (x86)\Lua\5.1;D:\Program Files (x86)\Lua\5.1\clibs;C:\Users\Administrator\AppData\Local\Microsoft\WindowsApps;D:\FreeInstallation\mysql-5.7.24-winx64\bin;D:\FreeInstallation\nvm;D:\Program Files\nodejs;D:\LoonTools;C:\Users\Administrator\AppData\Local\BypassRuntm;C:\Windows\Microsoft.NET\Framework\v4.0.30319;C:\Python27;C:\Python27\Scripts
+
+M:\Document\Lua\lua-5.3.5>call vcvars32.bat
+Setting environment for using Microsoft Visual Studio 2010 x86 Portable tools.
+
+M:\Document\Lua\lua-5.3.5>set path=I:\InstallerPackage\VisualStudio\vs2010_Compiler-2018-09-07-17-14\Compiler\VC\include;I:\InstallerPackage\VisualStudio\vs2010_Compiler-2018-09-07-17-14\Compiler\VC\bin\..\..\Common7\IDE\;I:\InstallerPackage\VisualStudio\vs2010_Compiler-2018-09-07-17-14\Compiler\VC\bin\..\..\\VC\BIN;I:\InstallerPackage\VisualStudio\vs2010_Compiler-2018-09-07-17-14\Compiler\VC\bin\..\..\Common7\Tools;I:\InstallerPackage\VisualStudio\vs2010_Compiler-2018-09-07-17-14\Compiler\VC\bin\..\..\\Frameworkv4.0.30319;I:\InstallerPackage\VisualStudio\vs2010_Compiler-2018-09-07-17-14\Compiler\VC\bin\..\..\\Frameworkv3.5;I:\InstallerPackage\VisualStudio\vs2010_Compiler-2018-09-07-17-14\Compiler\VC\bin\..\..\\Microsoft SDKs\Windows\v7.0A\bin\NETFX 4.0 Tools;I:\InstallerPackage\VisualStudio\vs2010_Compiler-2018-09-07-17-14\Compiler\VC\bin\..\..\\Microsoft SDKs\Windows\v7.0A\bin;I:\InstallerPackage\VisualStudio\vs2010_Compiler-2018-09-07-17-14\Compiler\VC\bin;D:\Program Files\ImageMagick-7.0.1-Q16;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0\;C:\Windows\System32\OpenSSH\;D:\Program Files\Git\cmd;C:\Program Files (x86)\NVIDIA Corporation\PhysX\Common;D:\dev\nvm;D:\dev\nodejs;D:\Program Files (x86)\Lua\5.1;D:\Program Files (x86)\Lua\5.1\clibs;C:\Users\Administrator\AppData\Local\Microsoft\WindowsApps;D:\FreeInstallation\mysql-5.7.24-winx64\bin;D:\FreeInstallation\nvm;D:\Program Files\nodejs;D:\LoonTools;C:\Users\Administrator\AppData\Local\BypassRuntm;C:\Windows\Microsoft.NET\Framework\v4.0.30319;C:\Python27;C:\Python27\Scripts
+
+M:\Document\Lua\lua-5.3.5>mkdir bin
+
+M:\Document\Lua\lua-5.3.5>cd src
+
+M:\Document\Lua\lua-5.3.5\src>cl /nologo /MD /O2 /W3 /c /D_CRT_SECURE_NO_DEPRECATE /DLUA_BUILD_AS_DLL l*.c
+lapi.c
+lapi.c(398) : warning C4244: “return”: 从“lua_Unsigned”转换到“size_t”，可能丢失数据
+lauxlib.c
+lbaselib.c
+lbitlib.c
+lcode.c
+lcorolib.c
+lctype.c
+ldblib.c
+ldebug.c
+ldo.c
+ldump.c
+lfunc.c
+lgc.c
+linit.c
+liolib.c
+llex.c
+lmathlib.c
+lmem.c
+loadlib.c
+lobject.c
+正在生成代码...
+正在编译...
+lopcodes.c
+loslib.c
+lparser.c
+lstate.c
+lstring.c
+lstrlib.c
+ltable.c
+ltablib.c
+ltm.c
+lua.c
+luac.c
+lundump.c
+lutf8lib.c
+lvm.c
+lzio.c
+正在生成代码...
+
+M:\Document\Lua\lua-5.3.5\src>del lua.obj luac.obj
+
+M:\Document\Lua\lua-5.3.5\src>link /nologo /DLL /out:../bin/lua.dll l*.obj
+   正在创建库 ../bin/lua.lib 和对象 ../bin/lua.exp
+
+M:\Document\Lua\lua-5.3.5\src>if exist lua52.dll.manifest mt /nologo -manifest lua52.dll.manifest -outputresource:lua52.dll;2
+
+M:\Document\Lua\lua-5.3.5\src>cl /nologo /MD /O2 /W3 /c /D_CRT_SECURE_NO_DEPRECATE /DLUA_BUILD_AS_DLL lua.c
+lua.c
+
+M:\Document\Lua\lua-5.3.5\src>link /nologo /out:../bin/lua.exe lua.obj ../bin/lua.lib
+
+M:\Document\Lua\lua-5.3.5\src>if exist lua.exe.manifest mt /nologo -manifest lua.exe.manifest -outputresource:lua.exe
+
+M:\Document\Lua\lua-5.3.5\src>cl /nologo /MD /O2 /W3 /c /D_CRT_SECURE_NO_DEPRECATE l*.c
+lapi.c
+lapi.c(398) : warning C4244: “return”: 从“lua_Unsigned”转换到“size_t”，可能丢失数据
+lauxlib.c
+lbaselib.c
+lbitlib.c
+lcode.c
+lcorolib.c
+lctype.c
+ldblib.c
+ldebug.c
+ldo.c
+ldump.c
+lfunc.c
+lgc.c
+linit.c
+liolib.c
+llex.c
+lmathlib.c
+lmem.c
+loadlib.c
+lobject.c
+正在生成代码...
+正在编译...
+lopcodes.c
+loslib.c
+lparser.c
+lstate.c
+lstring.c
+lstrlib.c
+ltable.c
+ltablib.c
+ltm.c
+lua.c
+luac.c
+lundump.c
+lutf8lib.c
+lvm.c
+lzio.c
+正在生成代码...
+
+M:\Document\Lua\lua-5.3.5\src>del lua.obj linit.obj lbaselib.obj ldblib.obj liolib.obj lmathlib.obj
+    loslib.obj ltablib.obj lstrlib.obj loadlib.obj
+
+M:\Document\Lua\lua-5.3.5\src>link /nologo /out:../bin/luac.exe *.obj
+
+M:\Document\Lua\lua-5.3.5\src>if exist luac.exe.manifest mt /nologo -manifest luac.exe.manifest -outputresource:luac.exe
+
+M:\Document\Lua\lua-5.3.5\src>del *.obj *.manifest
+
+M:\Document\Lua\lua-5.3.5\src>cd ..
